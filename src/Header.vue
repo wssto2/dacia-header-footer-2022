@@ -7,9 +7,8 @@
             <nav class="top-nav">
                 <ul class="module-container">
                     
-                    <li v-for="(topMenuItem, topMenuIndex) in topNavigation" :key="topMenuIndex" :class="[topMenuIndex == 0 ? 'home' : 'text-uppercase']">
-                        <a v-if="topMenuIndex === 0"  class="gtm-button home_link" :data-phf-ico-before="topMenuItem.icon" data-tracking-name="Nav0_Home" data-tracking-location="Menu top navigation" :href="topMenuItem.url"></a>
-                        <a v-else :data-tracking-name="topNavIndexClass" data-tracking-location="Menu top navigation" class="gtm-button" :href="topMenuItem.url" title="" target="_self" rel="nofollow noreferrer">
+                    <li v-for="(topMenuItem, topMenuIndex) in topNavigation" :key="topMenuIndex" class="text-uppercase">
+                        <a :data-tracking-name="topNavIndexClass" data-tracking-location="Menu top navigation" class="gtm-button" :href="topMenuItem.url" title="" target="_self" rel="nofollow noreferrer">
                             <span>{{ topMenuItem.title }}</span>
                         </a>
                     </li>
@@ -33,12 +32,13 @@
                             <li class="visible-xs visible-sm">
                                 <a class="home" :href="basicInformation.site_url" title="Početna"> <span class="text-uppercase">Početna</span></a>
                             </li>
-                            <Dropdown 
+                            <DropdownLink
                                 v-for="(navigationItem, itemIndex) in mainNavigation" 
                                 :key="itemIndex" 
                                 :item="navigationItem"
                                 :itemIndex="itemIndex"
-                                    @showModal="toggleCarCategory"
+                                :isActive="dropdownActive === itemIndex"
+                                @toggleDropdown="toggleDropdown"
                                 />
                             
                         </ul>
@@ -46,33 +46,34 @@
                     </nav>
                     <div class="header-part menu-trigger ico-before-menu" data-phf-ico-before="" @click="toggleMobileDropdown"></div>
                 </header>
-                <nav :class="['mobile-menu', { 'mobile-menu-activated' : mobileDropdown}]" :style="mobileDropdown ? 'display: block;' : 'display: none;'">
-                    <div class="close-button menu-trigger" @click="toggleMobileDropdown" data-phf-ico-after=""></div>
-        
-                    <ul class="main-navigation">
-                        <li class="visible-xs visible-sm">
-                            <a class="header-icon header-icon-home text-uppercase" :href="basicInformation.site_url"><span>Početna</span></a>
-                        </li>
-                        
-                        <Dropdown 
-                            v-for="(navigationItem, itemIndex) in mainNavigation" 
-                            :key="itemIndex" 
-                            :item="navigationItem"
-                            :itemIndex="itemIndex"
-                                @showModal="toggleCarCategory"
+
+                <nav :class="['mobile-menu', { 'is-active' : mobileDropdown}]">
+                    <div class="close-button-container">
+                        <div class="close-button menu-trigger" @click="toggleMobileDropdown">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" fill="#FFF" class="eecaeth8 header-t0hq5a e3bhxjg0"><path d="M29.999 2.512L27.5.012 14.999 12.504 2.498.012l-2.497 2.5L12.5 15.001.001 27.488l2.497 2.5 12.501-12.49L27.5 29.988l2.497-2.5-12.499-12.487z"></path></svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="mobile-menu-container">
+                        <div class="mobile-menu-heading">
+                            <span>{{ basicInformation.site_title }}</span>
+                        </div>
+                        <div>
+                            <MobileDropdown 
+                                :navigation="mainNavigation"
+                                @toggleSubDropdown="toggleSubDropdown"
                             />
-                        
-                    </ul>
-                    <div class="navigation-top-mobile">
-                        <ul class="module-container navigation-top-mobile">
-                            
-                            <li v-for="(topMenuItem, topMenuIndex) in topNavigation" :key="topMenuIndex" class="text-uppercase link-left">
-                                <a v-if="topMenuIndex != 0" :data-tracking-name="topNavIndexClass" data-tracking-location="Menu top navigation" class="gtm-button link-left_link" :data-phf-ico-before="topMenuItem.icon" :href="topMenuItem.url" title="" target="_self" rel="nofollow noreferrer">
-                                    <span><span>{{ topMenuItem.title }}</span></span>
-                                </a>
-                            </li>
-                            
-                        </ul>
+                        </div>
+                        <div class="mobile-menu-bottom-links" v-if="subContentMobileMenu === null">
+                            <ul>
+                                <li v-for="(topMenuItem, topMenuIndex) in topNavigation" :key="topMenuIndex" class="padding-left-5">
+                                    <a :data-tracking-name="topNavIndexClass" data-tracking-location="Menu top navigation" class=" gtm-button " :href="topMenuItem.url" title="" target="_self" rel="nofollow noreferrer">
+                                        <span><span v-if="topMenuItem.meta.bold" :style="topMenuItem.meta.yellow ? 'color: #000 !important; background-color: #efdf00;' : ''"><b>{{ topMenuItem.title }}</b></span><span v-else :style="topMenuItem.meta.yellow ? 'color: #000 !important; background-color: #efdf00;' : ''">{{ topMenuItem.title }}</span></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </nav>
                 <div class="nav-mask"></div>
@@ -101,6 +102,14 @@
         </div>
 
         <nav class="progress-nav helios-special-elements"></nav>
+
+        <Dropdown 
+                v-for="(navigationItem, itemIndex) in mainNavigation" 
+                :key="itemIndex" 
+                :item="navigationItem"
+                :itemIndex="itemIndex"
+                :dropdownActiveType="dropdownActive"
+            />
     </div>
 </div>
 
@@ -109,9 +118,11 @@
 <script>
     import axios from 'axios';
     import Dropdown from "@/components/Dropdown";
+    import DropdownLink from "@/components/DropdownLink"
+    import MobileDropdown from "@/components/MobileDropdown"
 
     export default {
-        components: { Dropdown },
+        components: { Dropdown, DropdownLink, MobileDropdown },
         name: 'Header',
         created() {
             if ("HEADER_FOOTER_SETTINGS" in window) {
@@ -132,7 +143,9 @@
                 activeCarCategory: null,
                 basicInformation: [],
                 topNavigation: [],                 
-                mainNavigation: []
+                mainNavigation: [],
+                dropdownActive: null,
+                subContentMobileMenu: null,
             }
         },
         beforeDestroy() {
@@ -149,6 +162,16 @@
             }
         },
         methods: {
+            toggleDropdown(index) {
+                console.log(index);
+                this.dropdownActive = this.dropdownActive === index ? null : index;
+            },
+
+            toggleSubDropdown(index) {
+                console.log(index);
+                this.subContentMobileMenu = index;
+            },
+
             fetchNavigation(apiUri) {
                 axios.get(apiUri)
                     .then((response) => {
@@ -160,23 +183,6 @@
             toggleMobileDropdown(){
                 this.mobileDropdown = !this.mobileDropdown
             },
-            toggleCarCategory(index){
-                console.log(index);
-                if(this.activeCarCategory === index) {
-                    this.activeCarCategory = null
-                } else {
-                    this.activeCarCategory = index
-                }
-                if(index === null) {
-                    this.activeCarCategory = null
-                }
-                
-            },
-            del(e) {
-                if(! this.$el.contains(e.target)){
-                    this.mobileDropdown = false
-                }
-            }
         }
     }
 </script>
