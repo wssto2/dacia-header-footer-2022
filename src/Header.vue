@@ -163,12 +163,10 @@
         },
         methods: {
             toggleDropdown(index) {
-                console.log(index);
                 this.dropdownActive = this.dropdownActive === index ? null : index;
             },
 
             toggleSubDropdown(index) {
-                console.log(index);
                 this.subContentMobileMenu = index;
             },
 

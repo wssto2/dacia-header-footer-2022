@@ -916,14 +916,14 @@
  .plugin-helios-header-footer .helios-special-elements#helios-header .page-header--helios .menu>ul li.expand-box .expand-container .sub-nav ul li a span{text-decoration:none}
  .plugin-helios-header-footer .helios-special-elements#helios-header .expand-container {border-top: 1px solid rgb(240, 243, 245);}
  .plugin-helios-header-footer .helios-special-elements#helios-header .expand-container .expand .sub-nav.sub-nav_vehicles {display: flex; flex-direction: row; justify-content: flex-start; align-items: flex-start;}
- .plugin-helios-header-footer .helios-special-elements#helios-header .expand-container .expand .sub-nav.sub-nav_vehicles ul {width: 20%; min-width: 325px; height: 100%; min-height: 100%; border-right: 1px solid rgb(242, 242, 242); list-style-type: none; padding-top: 4px;}
+ .plugin-helios-header-footer .helios-special-elements#helios-header .expand-container .expand .sub-nav.sub-nav_vehicles ul {width: 21.5%; min-width: 325px; height: 100%; min-height: 100%; border-right: 1px solid rgb(242, 242, 242); list-style-type: none; padding-top: 4px; padding-bottom: 36%;}
  .plugin-helios-header-footer .helios-special-elements#helios-header .expand-container .expand .sub-nav.sub-nav_vehicles ul li {padding-bottom: 4px;}
  .plugin-helios-header-footer .helios-special-elements#helios-header .expand-container .expand .sub-nav.sub-nav_vehicles ul li a {font-weight: 400; font-size: 14px; color: #000;}
  .plugin-helios-header-footer .helios-special-elements#helios-header .expand-container .expand .sub-nav.sub-nav_vehicles ul li a.active {font-weight: 700;}
- .plugin-helios-header-footer .helios-special-elements#helios-header .expand-container .expand .sub-nav.sub-nav_vehicles .vehicle-list {width: 80%; display: none; flex-direction: row; flex-wrap: wrap; padding-top: 10px;}
+ .plugin-helios-header-footer .helios-special-elements#helios-header .expand-container .expand .sub-nav.sub-nav_vehicles .vehicle-list {width: 78.5%; display: none; flex-direction: row; flex-wrap: wrap; padding-top: 0; padding-left: 0; padding-right: 0;}
  .plugin-helios-header-footer .helios-special-elements#helios-header .expand-container .expand .sub-nav.sub-nav_vehicles .vehicle-list.active {display: flex;}
- .plugin-helios-header-footer .helios-special-elements#helios-header .expand-container .expand .sub-nav.sub-nav_vehicles .vehicle-list .sub-nav_image_container_vehicle {width: 33.33%; padding-top: 70px;}
- .plugin-helios-header-footer .helios-special-elements#helios-header .expand-container .expand .sub-nav.sub-nav_vehicles .vehicle-list .sub-nav_image_container_vehicle.last-link {padding-top: 0; display: flex; flex-direction: column; justify-content: center; align-items: center;}
+ .plugin-helios-header-footer .helios-special-elements#helios-header .expand-container .expand .sub-nav.sub-nav_vehicles .vehicle-list .sub-nav_image_container_vehicle {width: 33.33%; padding-top: 64px;}
+ .plugin-helios-header-footer .helios-special-elements#helios-header .expand-container .expand .sub-nav.sub-nav_vehicles .vehicle-list .sub-nav_image_container_vehicle.last-link {padding-top: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;}
  .plugin-helios-header-footer .helios-special-elements#helios-header .expand-container .expand .sub-nav.sub-nav_vehicles .vehicle-list .sub-nav_image_container_vehicle.last-link a {padding-top: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; border: 1px solid rgb(204, 204, 204); height: 100%; width: 250px; margin-bottom: 40px;}
  .plugin-helios-header-footer .helios-special-elements#helios-header .expand-container .expand .sub-nav.sub-nav_vehicles .vehicle-list .sub-nav_image_container_vehicle.last-link a span:last-of-type {font-size: 14px; font-weight: 400; color: rgb(82, 98, 117); margin-top: 22px;}
  .plugin-helios-header-footer .helios-special-elements#helios-header .expand-container .expand .sub-nav.sub-nav_vehicles .vehicle-list .sub-nav_image_container_vehicle.last-link .yellow-cube-container {border: 2px solid rgb(100, 107, 82); border-radius: 100%; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center;}
@@ -1167,7 +1167,7 @@
  .plugin-helios-header-footer .helios-special-elements#helios-footer .page-footer footer .footer-links.footer-legal{padding-top:5px}
  @media (min-width:580px){.plugin-helios-header-footer .helios-special-elements#helios-footer .page-footer footer .footer-links.footer-legal{padding-top:0}
 }
- @media (min-width:960px){.plugin-helios-header-footer .helios-special-elements#helios-footer .page-footer footer .footer-links{padding:0 15px}
+ @media (min-width:960px){.plugin-helios-header-footer .helios-special-elements#helios-footer .page-footer footer .footer-links{padding:0 64px}
 }
  @media (min-width:960px){.plugin-helios-header-footer .helios-special-elements#helios-footer .page-footer footer .footer-links.footer-legal{float:right}
  [dir=rtl] .plugin-helios-header-footer .helios-special-elements#helios-footer .page-footer footer .footer-links.footer-legal{text-align:left}
