@@ -1170,6 +1170,7 @@
  @media (min-width:580px){.plugin-helios-header-footer .helios-special-elements#helios-footer .page-footer footer .footer-links.footer-legal{padding-top:0}
 }
  @media (min-width:960px){.plugin-helios-header-footer .helios-special-elements#helios-footer .page-footer footer .footer-links{padding:0 64px}
+ .plugin-helios-header-footer .helios-special-elements#helios-footer .page-footer footer .footer-links:nth-child(2){padding:0 64px 0 0}
 }
  @media (min-width:960px){.plugin-helios-header-footer .helios-special-elements#helios-footer .page-footer footer .footer-links.footer-legal{float:right}
  [dir=rtl] .plugin-helios-header-footer .helios-special-elements#helios-footer .page-footer footer .footer-links.footer-legal{text-align:left}
