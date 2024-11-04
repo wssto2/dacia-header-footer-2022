@@ -915,6 +915,9 @@
  .plugin-helios-header-footer .helios-special-elements#helios-header .page-header--helios .menu>ul li.expand-box .expand-container .sub-nav ul li a:hover{text-decoration:none;font-weight:700;border:2px solid #646b52}
  .plugin-helios-header-footer .helios-special-elements#helios-header .page-header--helios .menu>ul li.expand-box .expand-container .sub-nav ul li a span{text-decoration:none}
  .plugin-helios-header-footer .helios-special-elements#helios-header .expand-container {border-top: 1px solid rgb(240, 243, 245);}
+ .plugin-helios-header-footer .helios-special-elements#helios-header .expand-container .sub-nav_image_container {overflow: hidden;}
+ .plugin-helios-header-footer .helios-special-elements#helios-header .expand-container .sub-nav_image_container img {width: 100%; height: auto; transition: transform 0.3s; cursor: pointer;}
+ .plugin-helios-header-footer .helios-special-elements#helios-header .expand-container .sub-nav_image_container img:hover {transform: scale(1.05);}
  .plugin-helios-header-footer .helios-special-elements#helios-header .expand-container .expand .sub-nav.sub-nav_vehicles {display: flex; flex-direction: row; justify-content: flex-start; align-items: flex-start;}
  .plugin-helios-header-footer .helios-special-elements#helios-header .expand-container .expand .sub-nav.sub-nav_vehicles ul {width: 21.5%; min-width: 325px; height: 100%; min-height: 100%; border-right: 1px solid rgb(242, 242, 242); list-style-type: none; padding-top: 4px; padding-bottom: 36%;}
  .plugin-helios-header-footer .helios-special-elements#helios-header .expand-container .expand .sub-nav.sub-nav_vehicles ul li {padding-bottom: 4px;}

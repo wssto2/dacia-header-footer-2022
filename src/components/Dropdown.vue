@@ -36,16 +36,18 @@
         <div v-if="itemIndex !== 0 && !item.url && item != 0 && itemIndex === dropdownActiveType" :class="['expand-container', {'is-active' : dropdownActive}]">
             <div class="expand grid-row">
                 <div class="sub-nav dropdown-content">
-                    <ul>
+                    <ul :style="{ flexDirection: item.meta.direction === 'column' ? 'column' : 'row' }">
                         <li v-for="(dropdownLink, dropdownLinkIndex) in item.children" :key="dropdownLinkIndex">
                             <a class="sub-nav_link" :href="dropdownLink.url" target="_self" title="Renault SELECTION"><span>{{dropdownLink.title}}</span></a>
-                            <ul class="sub-nav_children">
+                            <ul class="sub-nav_children" v-if="!dropdownLink.meta.image">
                                 <li class="sub-nav_children-item" v-for="(dropdownLinkChild, dropdownLinkChildIndex) in item.children[dropdownLinkIndex].children" :key="dropdownLinkChildIndex">
                                     <a class="sub-nav_link_children" :href="dropdownLinkChild.url" :target="dropdownLinkChild.target != null ? dropdownLinkChild.target : '_self'" :title="dropdownLinkChild.title"><span>{{ dropdownLinkChild.title }}</span></a>
                                 </li>
                             </ul>
                             <div class="sub-nav_image_container">
-                                <img v-if="dropdownLink.meta.image" :src="dropdownLink.meta.image" :alt="dropdownLink.title">
+                                <a :href="dropdownLink.url" target="_self" title="Renault SELECTION">
+                                    <img v-if="dropdownLink.meta.image" :src="dropdownLink.meta.image" :alt="dropdownLink.title">
+                                </a>
                             </div>
                         </li>                        
                     </ul>
